@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(multer().array('images', 10));
 app.use(cors({
-    origin: 'https://car-management-cqzk.vercel.app', // Allow only requests from your frontend
+    origin: 'https://car-management-cqzk-git-main-sonalis-projects-8f13c874.vercel.app', // Allow only requests from your frontend
     methods: ['GET', 'POST', 'PUT', 'DELETE','PATCH'],
     credentials: true,
 }));
