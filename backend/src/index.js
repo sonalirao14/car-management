@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(multer().array('images', 10));
 app.use(cors({
-    origin: 'http://localhost:5173', // Allow only requests from your frontend
+    origin: 'https://car-management-cqzk.vercel.app', // Allow only requests from your frontend
     methods: ['GET', 'POST', 'PUT', 'DELETE','PATCH'],
     credentials: true,
 }));
