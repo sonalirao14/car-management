@@ -15,7 +15,7 @@ const EditCar = () => {
     const fetchCar = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get(`http://localhost:3000/api/cars/${id}`, {
+        const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASE_URL}/api/cars/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -41,7 +41,7 @@ const EditCar = () => {
       images.forEach((image) => formData.append('images', image));
 
       const token = localStorage.getItem('token');
-      await axios.patch(`http://localhost:3000/api/cars/${id}`, formData, {
+      await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND_BASE_URL}/api/cars/${id}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',
