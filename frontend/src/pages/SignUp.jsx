@@ -12,7 +12,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/users/signup', { name, email, password });
+      const response = await axios.post('http://localhost:3000/api/users/signup', { name, email, password });
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('userId', response.data.userId);
       navigate('/cars');

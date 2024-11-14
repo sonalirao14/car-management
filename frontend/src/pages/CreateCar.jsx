@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -20,7 +20,7 @@ const CreateCar = () => {
             images.forEach((image) => formData.append('images', image));
 
             const token = localStorage.getItem('token');
-            await axios.post('/api/cars', formData, {
+            await axios.post('http://localhost:3000/api/cars', formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'multipart/form-data',

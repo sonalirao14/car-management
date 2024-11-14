@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import userRoutes from './routes/user.routes.js';
 import carRoutes from './routes/car.routes.js';
 import multer from 'multer';
+import cors from 'cors';
 
 dotenv.config();
 
@@ -11,16 +12,25 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
+}).then(() => {
+    console.log('Connected to MongoDB');
+}).catch((error) => {
+    console.error('Error connecting to MongoDB:', error);
 });
 
 // Middleware
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
 app.use(multer().array('images', 10));
+app.use(cors({
+    origin: 'http://localhost:5173', // Allow only requests from your frontend
+    methods: ['GET', 'POST', 'PUT', 'DELETE','PATCH'],
+    credentials: true,
+}));
+
 
 // Routes
 app.use('/api/users', userRoutes);

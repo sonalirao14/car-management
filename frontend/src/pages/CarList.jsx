@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -10,7 +10,7 @@ const CarList = () => {
     const fetchCars = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('/api/cars', {
+        const response = await axios.get('http://localhost:3000/api/cars', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

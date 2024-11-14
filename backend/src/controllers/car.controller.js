@@ -1,6 +1,6 @@
 import Car from '../models/car.model.js';
 import User from '../models/user.model.js';
-import firebase from '../config/firebase.js';
+import firebase from '../config/firebase.js'
 
 export const createCar = async (req, res) => {
     try {
@@ -19,7 +19,7 @@ export const createCar = async (req, res) => {
         await user.save();
         res.status(201).json(car);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: error.message+"here" });
     }
 };
 
